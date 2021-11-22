@@ -2,30 +2,30 @@
 @section('content')
  <div class="container">
     <h1>LISTA DE PACIENTES</h1>
-    <table>
+    <table class="table table-dark table-striped mt-4">
         <tr>
-            <th  style="border:2px black solid; " >Nro </th>
-            <th  style="border:2px black solid; " >Nombre </th>
-            <th  style="border:2px black solid; ">Dni </th>
-            <th  style="border:2px black solid; ">Domicilio </th>
-            <th  style="border:2px black solid; ">Edad</th>
-            <th  style="border:2px black solid; ">Genero </th>
-            <th  style="border:2px black solid; ">Telefono </th>
+            <th   >Nro </th>
+            <th   >Nombre </th>
+            <th  >Dni </th>
+            <th  >Domicilio </th>
+            <th  >Edad</th>
+            <th  >Genero </th>
+            <th  >Telefono </th>
         </tr>
         <tbody>
         @forelse ($pacientes as $paciente)
                 <tr>
-                    <td style="border:2px black solid; ">{{ $loop->index + 1 }}</td>
-                    <td style="border:2px black solid; ">{{ $paciente->nombre }}</td>
-                    <td style="border:2px black solid; ">{{ $paciente->dni }}</td>
-                    <td style="border:2px black solid; ">{{ $paciente->domicilio }}</td>
-                    <td style="border:2px black solid; ">{{ $paciente->edad }}</td>
-                    <td style="border:2px black solid; ">{{ $paciente->genero }}</td>
-                    <td style="border:2px black solid; ">{{ $paciente->telefono }}</td>
+                    <td scope="col" >{{ $loop->index + 1 }}</td>
+                    <td scope="col" >{{ $paciente->nombre }}</td>
+                    <td scope="col" >{{ $paciente->dni }}</td>
+                    <td scope="col" >{{ $paciente->domicilio }}</td>
+                    <td scope="col" >{{ $paciente->edad }}</td>
+                    <td scope="col" >{{ $paciente->genero }}</td>
+                    <td scope="col" >{{ $paciente->telefono }}</td>
                 <td>
-                <a href="{{ route('paciente.editar', $paciente->slug) }}">Editar</a>
-                <a href="{{ route('paciente.ver', $paciente->slug) }}">Ver</a>
-                <a href="" onclick="if(confirm('¿Eliminar {{ $paciente->nombre }} ?'))event.preventDefault();
+                <a class="btn btn-info" href="{{ route('paciente.editar', $paciente->slug) }}">Editar</a>
+                <a class="btn btn-info" href="{{ route('paciente.ver', $paciente->slug) }}">Ver</a>
+                <a class="btn btn-danger" href="" onclick="if(confirm('¿Eliminar {{ $paciente->nombre }} ?'))event.preventDefault();
                      document.getElementById('borrar-{{ $paciente->slug }}').submit();">Eliminar</a>
                 
                 <form id="borrar-{{ $paciente->slug }}" method="post"
